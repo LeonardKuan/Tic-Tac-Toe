@@ -37,17 +37,24 @@ def get_user_move(board):
             print("Invalid input. Please enter a number.")
 
 def computer_optimal_move(board):
+<<<<<<< HEAD
     ### 1. Win: If the player has two in a row, they can place a third to get three in a row.
     
     # Horizontal 1st matching
     for i in range(3):
         if all(board[i][j] == "O" for j in range(2)) and board[i][2] == " ":
             print("executed hori match")
+=======
+    # Horizontal 1st matching
+    for i in range(3):
+        if all(board[i][j] == "O" for j in range(2)) and board[i][2] == " ":
+>>>>>>> 717579e0241a1ad85f9091085eacf317a7d15ebf
             return (i, 2)
 
     # Horizontal 2nd matching
     for i in range(3):
         if all(board[i][2 - j] == "O" for j in range(2)) and board[i][0] == " ":
+<<<<<<< HEAD
             print("executed hori match")
             return (i, 0)
         
@@ -61,11 +68,19 @@ def computer_optimal_move(board):
     for i in range(3):
         if all(board[j][i] == "O" for j in range(2)) and board[2][i] == " ":
             print("executed vert match")
+=======
+            return (i, 0)
+
+    # Vertical 1st matching
+    for i in range(3):
+        if all(board[j][i] == "O" for j in range(2)) and board[2][i] == " ":
+>>>>>>> 717579e0241a1ad85f9091085eacf317a7d15ebf
             return (2, i)
 
     # Vertical 2nd matching
     for i in range(3):
         if all(board[2 - j][i] == "O" for j in range(2)) and board[0][i] == " ":
+<<<<<<< HEAD
             print("executed vert match")
             return (0, i)
         
@@ -194,8 +209,30 @@ def computer_optimal_move(board):
 
     available_moves = [(i, j) for i in range(3) for j in range(3) if board[i][j] == " "]
     # available_moves will take the form of (i, j) to indicategetposition on board
+=======
+            return (0, i)
+
+    # Diagonal hard-code
+    if all(board[i][i] == "O" for i in range(2)) and board[2][2] == " ":
+        return (2, 2)
+
+    if all(board[i][i] == "O" for i in range(1, 3)) and board[0][0] == " ":
+        return (0, 0)
+
+    if board[0][2] == "O" and board[1][1] == "O" and board[2][0] == " ":
+        return (2, 0)
+
+    if board[1][1] == "O" and board[2][0] == "O" and board[0][2] == " ":
+        return (0, 2)
+    
+    available_moves = [(i, j) for i in range(3) for j in range(3) if board[i][j] == " "]
+    # available_moves will take the form of (i, j) to indicate position on board
+>>>>>>> 717579e0241a1ad85f9091085eacf317a7d15ebf
 
     return random.choice(available_moves)
+
+def get_computer_move(board):
+    computer_optimal_move(board)
 
 def play_tic_tac_toe():
     board = [[" " for _ in range(3)] for _ in range(3)] #  Structure [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
